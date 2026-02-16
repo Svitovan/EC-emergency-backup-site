@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Euro-Center | Local Assistance - Worldwide (Emergency Backup website)</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700&display=swap');
+
+    :root {
+      --bg: #0b0c0d;
+      --bg-alt: #121517;
+      --panel: #15191c;
+      --panel-2: #0f1214;
+      --text: #f5f5f5;
+      --muted: #b7b7b7;
+      --heading: #cfce22;
+      --accent: #0db1ad;
+      --accent-2: #6bd4b5;
+      --border: #2a2f33;
+      --warning: #f1b44c;
+      --header-bg: #0b0c0d;
+      --hero-bg: #121517;
+      --notice-bg: rgba(241, 180, 76, 0.14);
+      --notice-border: rgba(241, 180, 76, 0.35);
+      --notice-text: #f6d08e;
+    }
+
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #f6f7f7;
+        --bg-alt: #ffffff;
+        --panel: #ffffff;
+        --panel-2: #f1f3f4;
+        --text: #111111;
+        --muted: #4c4f52;
+        --heading: #283583;
+        --accent: #007a78;
+        --accent-2: #2a8a6a;
+        --border: #dadfe3;
+        --warning: #b9781f;
+        --header-bg: #ffffff;
+        --hero-bg: #ffffff;
+        --notice-bg: rgba(185, 120, 31, 0.12);
+        --notice-border: rgba(185, 120, 31, 0.35);
+        --notice-text: #6e4200;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Baloo 2", "Segoe UI", Tahoma, sans-serif;
+      line-height: 1.6;
+    }
+
+    .wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 28px 20px 72px;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 22px 24px;
+      border: 1px solid var(--border);
+      background: var(--header-bg);
+      border-radius: 12px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      font-weight: bold;
+    }
+
+    .brand-title {
+      font-size: 28px;
+      letter-spacing: 0.6px;
+      color: var(--heading);
+    }
+
+    .brand-sub {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .pill {
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: transparent;
+      color: var(--accent);
+      border: 1px solid rgba(53, 178, 182, 0.4);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .hero {
+      margin-top: 32px;
+      padding: 44px 36px;
+      border-radius: 14px;
+      background: var(--hero-bg);
+      border: 1px solid var(--border);
+      display: grid;
+      gap: 16px;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(30px, 4vw, 44px);
+      font-weight: 700;
+      letter-spacing: 0.6px;
+      color: var(--heading);
+    }
+
+    .hero p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .section {
+      margin-top: 28px;
+      padding: 28px 28px 26px;
+      border-radius: 12px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+    }
+
+    .section h2 {
+      margin: 0 0 12px;
+      font-size: 24px;
+      letter-spacing: 0.4px;
+      color: var(--heading);
+    }
+
+    .section p {
+      margin: 0 0 12px;
+      color: var(--muted);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    .contact-card {
+      padding: 16px 18px;
+      border-radius: 12px;
+      background: var(--panel-2);
+      border: 1px solid var(--border);
+    }
+
+    .contact-card span {
+      display: block;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--muted);
+    }
+
+    .contact-card strong {
+      display: block;
+      margin-top: 6px;
+      font-size: 16px;
+      color: var(--text);
+    }
+
+    .services {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      margin-top: 16px;
+    }
+
+    .service-card {
+      background: var(--panel-2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px 18px 16px;
+    }
+
+    .service-card h3 {
+      margin: 0 0 10px;
+      font-size: 18px;
+      color: var(--heading);
+    }
+
+    .service-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .service-card li {
+      margin-bottom: 8px;
+      padding-left: 16px;
+      position: relative;
+    }
+
+    .service-card li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--accent-2);
+    }
+
+    .updates {
+      display: grid;
+      gap: 12px;
+    }
+
+    .updates .notice {
+      background: var(--notice-bg);
+      border: 1px solid var(--notice-border);
+      color: var(--notice-text);
+      padding: 12px 14px;
+      border-radius: 12px;
+      font-size: 14px;
+    }
+
+    .updates ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .updates li {
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--panel-2);
+      margin-bottom: 10px;
+      color: var(--muted);
+    }
+
+    .about p {
+      margin: 0;
+    }
+
+    footer {
+      margin-top: 36px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 720px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero {
+        padding: 28px 22px;
+      }
+
+      .section {
+        padding: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="brand-title">Euro-Center</div>
+        <div class="brand-sub">Local Assistance - Worldwide</div>
+      </div>
+      <div class="pill">Emergency Backup Website</div>
+    </header>
+
+    <section class="hero">
+      <h1>Welcome to Euro-Center's Backup Website</h1>
+      <p>Our main website has been disrupted. Please find our essential services and information below until our main site is up and running again. Your safety and peace of mind are our priorities.</p>
+    </section>
+
+    <section class="section">
+      <h2>Emergency Assistance Available 24/7</h2>
+      <p>If you need urgent assistance, please contact our dedicated support teams directly.</p>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <span>Emergency Hotline</span>
+          <strong>[ECP, ECBKG]</strong>
+        </div>
+        <div class="contact-card">
+          <span>Email Support</span>
+          <strong>[ECP, ECBKG]</strong>
+        </div>
+      </div>
+      <p style="margin-top: 16px;">We understand times of crisis can cause stress and uncertainty. Our global team is here to support you, no matter where you are in the world.</p>
+    </section>
+
+    <section class="section">
+      <h2>Our Services</h2>
+      <p>We provide a broad range of services tailored especially for:</p>
+      <div class="services">
+        <div class="service-card">
+          <h3>1. Insurance Companies</h3>
+          <ul>
+            <li>Emergency Assistance: 24/7 help and advice for expatriates and travelers.</li>
+            <li>Claims Handling: Streamlined services ensuring quick resolutions, including Flash the Card services.</li>
+            <li>Language Support: Multilingual assistance is available to cater to your needs.</li>
+          </ul>
+        </div>
+        <div class="service-card">
+          <h3>2. Assistance Companies</h3>
+          <ul>
+            <li>Local Expertise: Access to the medical provider network of 12 Euro-Centers for comprehensive assistance globally.</li>
+            <li>Cost Management: Cost containment and case management support to navigate medical care efficiently.</li>
+          </ul>
+        </div>
+        <div class="service-card">
+          <h3>3. Corporate Clients</h3>
+          <ul>
+            <li>Medical Assistance: Continuous access to local healthcare networks and cashless services.</li>
+            <li>Evacuation Solutions: Customized emergency response plans available.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section updates">
+      <h2>Stay Updated</h2>
+      <p>Your safety is our mission. For updates and communication during this period, please follow updates here:</p>
+      <div class="notice">A field where we can upload information ongoingly on this dark site.</div>
+      <ul>
+        <li>LinkedIn: EC’s link.</li>
+      </ul>
+    </section>
+
+    <section class="section about">
+      <h2>About Euro-Center</h2>
+      <p>With over 50 years of experience and a network of 70,000 medical facilities, Euro-Center is one of the world’s leading companies in the field of medical assistance, travel assistance and claims handling. With our 12 regional offices, we provide local assistance – globally. Euro-Center is ISO 9001:2015 certified.</p>
+    </section>
+
+    <footer>
+      Euro-Center | Local Assistance - Worldwide
+    </footer>
+  </div>
+</body>
+</html>
